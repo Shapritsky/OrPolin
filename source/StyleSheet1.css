@@ -22,7 +22,7 @@ header {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../img/9.jpg');
+        background-image: url('9.jpg');
         width: 100%;
         height: 100%;
         background-size: cover;
@@ -163,35 +163,35 @@ section {
 
 /* תמונות רקע עבור כל Section */
 #section1 {
-    background-image: url('../img/1.jpg');
+    background-image: url('1.jpg');
 }
 
 #section2 {
-    background-image: url('../img/2.jpg');
+    background-image: url('2.jpg');
 }
 
 #section3 {
-    background-image: url('../img/3.jpg');
+    background-image: url('3.jpg');
 }
 
 #section4 {
-    background-image: url('../img/4.jpg');
+    background-image: url('4.jpg');
 }
 
 #section5 {
-    background-image: url('../img/5.jpg');
+    background-image: url('5.jpg');
 }
 
 #section6 {
-    background-image: url('../img/6.jpg');
+    background-image: url('6.jpg');
 }
 
 #section7 {
-    background-image: url('../img/7.jpg');
+    background-image: url('7.jpg');
 }
 
 #section8 {
-    background-image: url('../img/8.jpg');
+    background-image: url('8.jpg');
 }
 
 .image-grid {
@@ -361,13 +361,13 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../img/your-image.jpg'); /* התמונה שברצונך להשתמש בה */
+    background-image: url('your-image.jpg'); /* התמונה שברצונך להשתמש בה */
     background-size: cover; /* מכסה את כל המסך */
     background-position: center; /* ממקם את התמונה במרכז */
     background-repeat: no-repeat; /* מונע חזרת התמונה */
 }
 .background {
-    background-image: url('../img/19.jpg');
+    background-image: url('19.jpg');
     background-size: cover; /* כיסוי מלא */
     background-position: center; /* מיקום מרכזי */
     height: 100vh; /* גובה של 100% מהמסך */
@@ -703,7 +703,36 @@ audio {
     height: 1228px;
     border-radius: 12px;
 }
+.timer-text {
+    font-size:100px;
+    font-weight:100;
+}
 
 #timer {
-    font-size: 248px; /* גודל טקסט גדול */
+    font-size: 150px;
+    margin-top:-75px;
+}
+
+iframe {
+    border-radius: 12px;
+    height: 70%;
+    zoom: 2; /* משנה את כל קנה המידה של הדף */
+}
+.continer-timer {
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* שקוף כהה */
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: block; /* כל פסקה תהיה אלמנט בלוק */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.timer-text2 {
+    font-size: 70px;
+    font-weight: 100;
+    margin-top:-80px;
 }

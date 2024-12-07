@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header style=" overflow:hidden">
+    <div class="background">
         <div class="toggle">
             <span></span>
             <span></span>
@@ -22,29 +22,19 @@
             <a href="Gallrey.html">תמונות</a>
             <a href="פרופורציה.html">פרופורציה</a>
         </nav>
-        <section id="camera-page">
-            <!-- כיתוב המצלמה -->
-            <div class="camera-caption">
-                <h2>מצלמה מצלמה שבטלפון, מי הכי יפה בפולין היום?</h2>
-            </div>
-            <!-- מצלמה -->
-            <video id="camera" autoplay playsinline></video>
-        </section>
-    </header>
 
 
-
-
+        <div class="continer">
+            <p>
+                אור אהובה שלי,
+                איזה טירוף שהטיול הזה כבר נגמר, אה? אני בטוח שאת חוזרת עם ים חוויות וסיפורים, וגם עם קצת דברים כבדים על הלב. אבל זה מה שמיוחד בך – את בן אדם מכיר ואני בטוח שהצלחת להתמודד עם הכל
+                , לקחת מזה את הטוב ולהבין על העבר של היהדות. זה לא היה קל, אבל אני בטוח שיצאת מזה חזקה יותר.
+            </p>
+            <p> תאמת אני כבר מתגעגע בטירוף. מת לראות אותך, לשמוע את כל הסיפורים, ולהבין מה עבר עלייך שם (בלי יותר מדי ספויילרים כי גם אני אעבור את זה שנה הבאה)</p>
+            <p> אז שתדעי שברגע שאת נוחתת – אני ואת בארסוף. קצת של שקט אחרי כל המסע והתהליך שעברת. לא משנה מה, אני כאן, ומחכה לך בטירוף. אוהב אותך מלא! ❤️</p>
+        </div>
+    </div>
     <script>
-    // גישה למצלמה של הדפדפן
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                document.getElementById('camera').srcObject = stream;
-            })
-            .catch(function (error) {
-                console.error("שגיאה בגישה למצלמה: ", error);
-            });
-
         let toggler = document.querySelector(".toggle");
         let close = document.querySelector(".close");
         let nav = document.querySelector("nav");
@@ -64,9 +54,6 @@
             if (e.key === "Escape") {
                 nav.classList.remove("open");
             }
-        }
-    </script>
-
-
+        }</script>
 </body>
 </html>

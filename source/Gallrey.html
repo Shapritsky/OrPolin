@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>תמונות מתחלפות</title>
-    <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link href="StyleSheet1.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
@@ -23,27 +23,27 @@
         <a href="פרופורציה.html">פרופורציה</a>
     </nav>
     <div class="image-grid">
-        <img src="../img/1.jpg" alt="Image 1" class="image" />
-        <img src="../img/2.jpg" alt="Image 2" class="image" />
-        <img src="../img/3.jpg" alt="Image 3" class="image" />
-        <img src="../img/4.jpg" alt="Image 4" class="image" />
-        <img src="../img/5.jpg" alt="Image 5" class="image" />
-        <img src="../img/6.jpg" alt="Image 6" class="image" />
-        <img src="../img/7.jpg" alt="Image 7" class="image" />
-        <img src="../img/8.jpg" alt="Image 8" class="image" />
-        <img src="../img/10.jpg" alt="Image 10" class="image" />
-        <img src="../img/11.jpg" alt="Image 11" class="image" />
-        <img src="../img/12.jpg" alt="Image 12" class="image" />
-        <img src="../img/13.jpg" alt="Image 13" class="image" />
-        <img src="../img/14.jpg" alt="Image 14" class="image" />
-        <img src="../img/15.jpg" alt="Image 15" class="image" />
-        <img src="../img/16.jpg" alt="Image 16" class="image" />
-        <img src="../img/17.jpg" alt="Image 17" class="image" />
-        <img src="../img/18.jpg" alt="Image 18" class="image" />
-        <img src="../img/20.jpg" alt="Image 20" class="image" />
-        <img src="../img/21.jpg" alt="Image 21" class="image" />
-        <img src="../img/22.jpg" alt="Image 22" class="image" />
-        <img src="../img/24.jpg" alt="Image 24" class="image" />
+        <img src="1.jpg" alt="Image 1" class="image" />
+        <img src="2.jpg" alt="Image 2" class="image" />
+        <img src="3.jpg" alt="Image 3" class="image" />
+        <img src="4.jpg" alt="Image 4" class="image" />
+        <img src="5.jpg" alt="Image 5" class="image" />
+        <img src="6.jpg" alt="Image 6" class="image" />
+        <img src="7.jpg" alt="Image 7" class="image" />
+        <img src="8.jpg" alt="Image 8" class="image" />
+        <img src="10.jpg" alt="Image 10" class="image" />
+        <img src="11.jpg" alt="Image 11" class="image" />
+        <img src="12.jpg" alt="Image 12" class="image" />
+        <img src="13.jpg" alt="Image 13" class="image" />
+        <img src="14.jpg" alt="Image 14" class="image" />
+        <img src="15.jpg" alt="Image 15" class="image" />
+        <img src="16.jpg" alt="Image 16" class="image" />
+        <img src="17.jpg" alt="Image 17" class="image" />
+        <img src="18.jpg" alt="Image 18" class="image" />
+        <img src="20.jpg" alt="Image 20" class="image" />
+        <img src="21.jpg" alt="Image 21" class="image" />
+        <img src="22.jpg" alt="Image 22" class="image" />
+        <img src="24.jpg" alt="Image 24" class="image" />
     </div>
 
     <!-- Modal -->
@@ -99,7 +99,7 @@
             // החלת אפקט עילמות לתמונה
             images[index].classList.add('fade-out');
             setTimeout(() => {
-                images[index].src = `../img/${newImage}.jpg`;
+                images[index].src = `${newImage}.jpg`;
                 images[index].classList.remove('fade-out');
                 images[index].classList.add('fade-in');
                 setTimeout(() => {
