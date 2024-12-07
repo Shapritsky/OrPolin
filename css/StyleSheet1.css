@@ -1,0 +1,709 @@
+﻿body {
+    padding: 0;
+    direction: rtl;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+    margin: 0px;
+    background-color: #b8aa95;
+    overflow: visible; /* מאפשר לראות את התמונות שזזות */
+}
+
+header {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    border-radius: 20px; /* border radius */
+}
+
+    header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url('../img/9.jpg');
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: blur(3px) brightness(70%);
+        z-index: -1;
+    }
+
+    header h1 {
+        color: #FAF9F6;
+        font-size: 150px;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+.toggle {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background-color: transparent;
+    cursor: pointer;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    transform: translate(-40%, 15%);
+    border: 2px solid transparent;
+}
+
+    .toggle span {
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        transition: 0.3s;
+    }
+
+    .toggle:hover span {
+        background-color: #333;
+    }
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    background-color: #333;
+    width: 110vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.3s;
+    transform: translateY(-100%);
+    border-radius: 20px; /* border radius */
+}
+
+    nav.open {
+        transform: translateY(0);
+    }
+
+    nav .close {
+        position: fixed;
+        top: 20px;
+        right: 100px;
+        border: 2px solid white;
+        width: 70px;
+        height: 70px;
+        font-size: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        cursor: pointer;
+        z-index: 99999;
+        transition: 0.3s;
+    }
+
+        nav .close:hover {
+            color: indianred;
+            border-color: indianred;
+        }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 80px;
+        transition: 0.3s;
+        margin-bottom: 150px;
+    }
+
+        nav a:hover {
+            background-color: rgb(0 0 0 / 50%);
+        }
+
+section {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    border-radius: 20px; /* border radius */
+}
+
+    section h2 {
+        font-size: 100px;
+        margin: 0;
+        position: absolute;
+        z-index: 2;
+    }
+
+    section .btn {
+        font-size: 40px;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+        text-decoration: none;
+        position: absolute;
+        transform: translate(0%, 200%);
+        z-index: 2;
+        border:none;
+    }
+
+        section a.btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+/* תמונות רקע עבור כל Section */
+#section1 {
+    background-image: url('../img/1.jpg');
+}
+
+#section2 {
+    background-image: url('../img/2.jpg');
+}
+
+#section3 {
+    background-image: url('../img/3.jpg');
+}
+
+#section4 {
+    background-image: url('../img/4.jpg');
+}
+
+#section5 {
+    background-image: url('../img/5.jpg');
+}
+
+#section6 {
+    background-image: url('../img/6.jpg');
+}
+
+#section7 {
+    background-image: url('../img/7.jpg');
+}
+
+#section8 {
+    background-image: url('../img/8.jpg');
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 עמודות בגודל שווה */
+    grid-gap: 10px; /* רווח בין התמונות */
+    width: 100vw; /* רוחב אחיד לכל המסך */
+    height: 100vh; /* גובה אחיד לכל המסך */
+    overflow-y: auto; /* אפשרות לגלול למטה */
+    position: relative; /* מאוד חשוב כדי שנוכל להזיז את האלמנט */
+    padding: 20px; /* ריווח פנימי כדי שהתמונות לא יגעו בקצוות */
+}
+
+/* סגנון עבור כל תמונה */
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* הילה רכה לתמונה */
+    opacity: 1; /* ברירת מחדל התמונות גלויות */
+    transition: opacity 1s ease-in-out; /* אפקט של עילמות */
+}
+
+    /* אפקט עילמות - fade-out */
+    .image.fade-out {
+        opacity: 0; /* עילמות */
+    }
+
+    /* אפקט חזרה - fade-in */
+    .image.fade-in {
+        opacity: 1; /* התמונות יחזרו להיות גלויות */
+    }
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110vw; /* Full viewport width */
+    height: 110vh; /* Full viewport height */
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden; /* Ensure no scrollbars on mobile */
+}
+
+.modal-content {
+    width: 80%;
+    height: 100%;
+    object-fit: contain; /* Adjust image to fit the screen without cutting it off */
+    max-width: 100%;
+    border-radius: 35vw;
+    max-height: 100%;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 100px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .close-modal:hover,
+    .close-modal:focus {
+        color: #f44336;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* רוחב מסך מלא */
+    height: 100vh; /* גובה מסך מלא */
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1; /* התחל עם שקיפות 1 */
+    transition: opacity 1s ease-out; /* אפקט של העלמה איטית עם ease-out */
+    overflow: hidden; /* מונע הצגת גלילה */
+}
+
+    .loader.hidden {
+        opacity: 0; /* ברגע שהטעינה לא נראית, שקיפות תהיה 0 */
+    }
+
+.loader-icon {
+    width: 700px; /* הגדלה פי 10 */
+    height: 700px; /* הגדלה פי 10 */
+    border: 25px solid white; /* קו הלבן */
+    border-radius: 50%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.white-line {
+    width: 300px; /* אורך הקו הלבן */
+    height: 70px; /* גובה הקו */
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader-text {
+    color: black;
+    font-size: 70px; /* הגדלת הגודל */
+    position: absolute;
+    top: 50%;
+    font-weight: 700;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* מצלמה */
+
+/* מצלמה */
+#camera {
+    border-radius: 30px; /* גבולות מעוגלים */
+    width: 80%; /* גודל מלא לרוחב */
+    height: 70%; /* גובה מלא */
+    object-fit: cover; /* מכסה את כל המסך */
+    position: absolute;
+    top: 20vh;
+    transform:translate(12.5%);
+    left: 0;
+    z-index: 1; /* אחורה מהכיתוב */
+}
+
+/* כיתוב */
+.camera-caption {
+    position: absolute;
+    top: 5vh; /* ממקם את הכיתוב בחלק העליון */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 50px;
+    z-index: 2; /* מעל המצלמה */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* הצללה לכיתוב */
+    text-align: center;
+    width: 90%; /* רוחב כמעט מלא */
+    line-height: 1.2; /* ריווח בין השורות */
+    word-wrap: break-word; /* חלוקה אוטומטית של מילים */
+    hyphens: auto; /* חלוקה אוטומטית של מילים */
+}
+
+/* section למצלמה */
+/* מונע גלילה בעמוד הזה */
+#camera-page {
+    position: relative;
+    height: 100vh; /* גובה מלא */
+    overflow: hidden; /* לא יגלול */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/your-image.jpg'); /* התמונה שברצונך להשתמש בה */
+    background-size: cover; /* מכסה את כל המסך */
+    background-position: center; /* ממקם את התמונה במרכז */
+    background-repeat: no-repeat; /* מונע חזרת התמונה */
+}
+.background {
+    background-image: url('../img/19.jpg');
+    background-size: cover; /* כיסוי מלא */
+    background-position: center; /* מיקום מרכזי */
+    height: 100vh; /* גובה של 100% מהמסך */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat; /* תמונה אחת בלי חזרה */
+}
+
+.continer {
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* שקוף כהה */
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: block; /* כל פסקה תהיה אלמנט בלוק */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    transform: translate(7%)
+}
+.background .toggle {
+
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background-color: transparent;
+    cursor: pointer;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    transform: translate(15%, -930%);
+    border: 2px solid transparent;
+
+}
+p {
+    width:80%;
+    margin-bottom: 30px; /* רווח בין כל פסקה לפסקה (אפשר לשנות לפי הצורך) */
+    font-size: 50px; /* גודל גופן (אפשר לשנות לפי הצורך) */
+    line-height: 1.5; /* רווח בין השורות (אפשר לשנות לפי הצורך) */
+    color: #fff; /* צבע טקסט (אפשר לשנות לפי הצורך) */
+    transform:translate(-12.5%);
+}
+
+.continer-m {
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* רקע כהה חצי שקוף */
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    display: flex; /* שימוש ב-Flexbox */
+    flex-direction: column; /* סידור אנכי של שני החלקים */
+    justify-content: space-between; /* מרווח בין החלקים */
+    padding: 20px;
+    color: white;
+    text-align: center;
+    transform: translate(7%)
+}
+
+.song-lyrics {
+    height: 70%; /* 50% מהגובה */
+    overflow-y: auto; /* גלילה אם הטקסט ארוך מדי */
+}
+
+.song-controls {
+    height: 50%; /* 50% מהגובה */
+    display: flex;
+    flex-direction: column; /* סידור אנכי של נגן השיר והברכה */
+    justify-content: center; /* אמצע החלק */
+    align-items: center; /* יישור מרכזי */
+}
+
+    .song-controls audio {
+        margin-bottom: 20px; /* רווח מתחת לנגן */
+    }
+
+    .song-controls p {
+        font-size: 24px; /* גודל טקסט הברכה */
+        margin-bottom: 10px;
+    }
+
+    .song-controls small {
+        font-size: 16px; /* גודל הטקסט הקטן */
+        color: #ccc; /* צבע טקסט משני */
+    }
+  .mp-wrapper {
+  position: absolute;
+  top: calc(80% - 10rem);
+  transform:translate(-3%);
+  width: 90%;
+  height: 25%;
+  background: rgba(255,255,255,0.4);
+  color: white;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 1rem rgba(0,0,0,0.5), inset 0 0 .1rem rgba(0,0,0,0.4);
+  overflow: hidden;
+  transition: .5s width, .5s height .5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* מוודא שהחלק העליון יהיה ריק ונשאר פנוי */
+  align-items: center;
+}
+
+.mp {
+  position: relative;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mp-artist {
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.33) 0%,rgba(0,0,0,0) 100%), url('https://s.cdpn.io/40435/kanye.jpg');
+  background-size: cover;
+  box-shadow: 0 0 .3rem rgba(0,0,0,0.1), 0 0 0 .5rem rgba(255,255,255,0.05), 0 0 .1rem 0rem rgba(0,0,0,0.1);
+  border-radius: 50%;
+}
+
+.mp-metadata {
+    position: absolute;
+    top: 1rem;
+    left: 10rem;
+    text-align: center;
+}
+  h3 {
+    margin-bottom: 0;
+    font-size: 50px;
+    transform:translate(10%,-20px);
+  }
+h4 {
+    margin: -15px;
+    font-size: 30px;
+    transform: translate(10%,0);
+}
+.mp-lyrics {
+    margin-top: 30px;
+    font-size: 40px;
+    transform: translate(10%,0);
+}
+
+
+
+
+.mp-time {
+  display: none; /* הסתרת הזמן */
+}
+
+.audio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 3rem; /* הורדת הנגן למטה */
+}
+audio {
+}
+.audio-container audio {
+  width: 80%;
+}
+
+
+@media (max-width: 960px) {
+  .mp-wrapper {
+    width: 80%;
+    height: 18rem;
+    top: calc(85% - 9rem);
+    left: calc(50% - 15rem);
+  }
+
+  .mp-metadata h3 {
+    font-size: 1.25rem;
+  }
+
+  .mp-metadata h4 {
+    font-size: 1rem;
+  }
+
+  .mp-lyrics {
+    font-size: .8rem;
+  }
+}
+#playPauseButton {
+    font-size: 40px;
+    border: outset black 3px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+}
+#quiz-container {
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    margin: auto; /* ממרכז את התוכן */
+    text-align: center;
+    margin-top:15%;
+    height:80%;
+}
+
+    #quiz-container .question {
+        font-size: 130px;
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    #quiz-container .options {
+        display: flex;
+        flex-direction: column; /* תשובות אחת מתחת לשנייה */
+        gap: 20px; /* מרווח בין כפתורים */
+        height:50%;
+        margin-top:5%;
+    }
+
+        #quiz-container .options button {
+            font-family: "Amatic SC", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            width: 100%;
+            padding:15px;
+            gap:20px;
+            font-size: 80px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+            #quiz-container .options button:hover {
+                background-color: rgba(255, 255, 255, 0.4);
+                transform: scale(1.05);
+            }
+
+            #quiz-container .options button.correct {
+                background-color: rgba(144, 238, 144, 0.6); /* ירוק לתשובה נכונה */
+            }
+
+            #quiz-container .options button.wrong {
+                background-color: rgba(255, 99, 71, 0.6); /* אדום לתשובה שגויה */
+            }
+
+#score {
+    font-size: 80px;
+    color: white;
+    margin-top: -120%;
+}
+
+
+#start-button {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    padding: 150px;
+    font-size: 120px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top:20%;
+}
+   #start-button:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.05);
+    }
+.question-start {
+    font-size: 130px;
+    color: white;
+    margin-bottom: 20px;
+}
+.question-start strong {
+    font-size: 83px;
+    color: white;
+}
+.correct {
+    background-color: green;
+    color: white;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+}
+
+.hidden-q {
+    display: none;
+}
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 9999; /* וודא שה-loader תמיד יהיה על כל שאר התוכן */
+}
+
+/* התוכן של הדף - מוסתר בזמן שה-loader מופיע */
+#content {
+    display: none; /* התוכן מתחיל מוסתר */
+}
+
+/* מיקום הטיימר והמוזיקה באמצע הדף */
+#timer-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+#spotify-player {
+    margin-top:50%;
+    width: 100%;
+    height: 1228px;
+    border-radius: 12px;
+}
+
+#timer {
+    font-size: 248px; /* גודל טקסט גדול */
+}

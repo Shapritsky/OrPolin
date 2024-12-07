@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <div class="close">X</div>
+            <a href="Main.html">ראשי</a>
+            <a href="mirror.html">מצלמה שבטלפון</a>
+            <a href="Gallrey.html">תמונות</a>
+            <a href="פרופורציה.html">פרופורציה</a>
+        </nav>
+
+
+        <div class="continer">
+            <p>
+                יפה שלי,
+                קודם כל אני כל כך גאה בך על
+                הדרך שאת עוברת.
+                המסע הזה לא פשוט בכלל ואני בטוחה שזה לא קל, אבל אני יודעת שאת מצליחה להתמודד עם הכל בצורה הכי טובה שיכולה להיות.
+            </p>
+            <p>
+                אני מקווה שהמסע הזה משמעותי עבורך, ושאת מבינה את המשמעות של כל דבר בדרך ואת הגודל של הזכות והניצחון שאת עומדת שם כרגע.
+                אני יודעת שהטיול הזה לא קל בכלל ולפעמים גם יכול להיות מאתגר,
+                ובלי קשר להיות כל כך הרבה ימים עם אותם ילדים לא מקל על הקושי..
+            </p>
+            <p>
+                אבל אני מאחלת לך ובטוחה שאת צוברת חוויות שילוו אותך כל החיים, נהנת מכל דבר ורגע, מנצלת ונהנית מהמסע הזה ומהרגעים הקטנים שבדרך כי זה חשוב ברמות!!!
+                בקיצור אהובתי מחכה כבר לשמוע סיכום מסע
+                מתגעגעת מלא ומקווה להיפגש כמה שיותר מהר!!
+                אוהבת הכי בעולם
+                דריה❤
+            </p>
+        </div>
+    </div>
+    <script>
+        let toggler = document.querySelector(".toggle");
+        let close = document.querySelector(".close");
+        let nav = document.querySelector("nav");
+
+        // כאשר לוחצים על אייקון התפריט
+        toggler.onclick = function () {
+            nav.classList.add("open");
+        }
+
+        // כאשר לוחצים על כפתור הסגירה
+        close.onclick = function () {
+            nav.classList.remove("open");
+        }
+
+        // כאשר לוחצים על מקש ה-Escape
+        document.onkeyup = function (e) {
+            if (e.key === "Escape") {
+                nav.classList.remove("open");
+            }
+        }</script>
+</body>
+</html>

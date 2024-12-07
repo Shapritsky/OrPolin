@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="background">
+        <div class="toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <div class="close">X</div>
+            <a href="Main.html">ראשי</a>
+            <a href="mirror.html">מצלמה שבטלפון</a>
+            <a href="Gallrey.html">תמונות</a>
+            <a href="פרופורציה.html">פרופורציה</a>
+        </nav>
+
+        <div class="continer">
+            <div id="quiz-container">
+                <div id="start-screen">
+                    <h1 class="question-start">ברוכה הבאה לשאלון זוגיות!<strong>מהקל לקשה (קשה מאוד)</strong></h1>
+                    <button id="start-button">תלחצי להתחלה</button>
+                </div>
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+                <div id="score" class="hidden-q">ציון: <span id="correct-answers">0</span> מתוך <span id="total-questions">0</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let toggler = document.querySelector(".toggle");
+        let close = document.querySelector(".close");
+        let nav = document.querySelector("nav");
+
+        // כאשר לוחצים על אייקון התפריט
+        toggler.onclick = function () {
+            nav.classList.add("open");
+        }
+
+        // כאשר לוחצים על כפתור הסגירה
+        close.onclick = function () {
+            nav.classList.remove("open");
+        }
+
+        // כאשר לוחצים על מקש ה-Escape
+        document.onkeyup = function (e) {
+            if (e.key === "Escape") {
+                nav.classList.remove("open");
+            }
+        }
+
+        // נתוני השאלות
+        const questions = [
+            {
+                question: "מה המאכל האהוב עלייך?",
+                answers: ["פיצה", "המבורגר", "סושי", "פסטה"],
+                correct: 0
+            },
+            {
+                question: "מה מהמאכלים הבאים בחיים לא אכלתי?",
+                answers: ["חזיר", "סביח", "גפילטה פיש", "רביולי"],
+                correct: 3
+            },
+            {
+                question: "מה התחביב האהוב עליי?",
+                answers: ["לבנות אתרים", "כדורעף", "לטייל", "לראות טלוויזיה"],
+                correct: 1
+            },
+            {
+                question: "איזה סרט בחיים לא ראיתי?",
+                answers: ["דדפול", "מהיר ועצבני", "מארוול", "טיטאניק"],
+                correct: 3
+            },
+            {
+                question: "באיזה עיר אף פעם לא הייתי?",
+                answers: ["חולון", "ראשון לציון", "אילת", "מטולה"],
+                correct: 1
+            },
+            {
+                question: "בכמה מדינות הייתי?",
+                answers: ["3", "5", "9", "7"],
+                correct: 1
+            },
+            {
+                question: "אני אוהב אותך?",
+                answers: ["כן וגם אני אותך", "כן יגבר", "כן נסיך שלי גם אני אותך", "כן אבל אני אוהבת כושים"],
+                correct: 3
+            },
+            {
+                question: "מה היום שהתחלנו לדבר ממש?",
+                answers: ["שלקחת אותי באוטו לתנועה", "בהשתלמות", "שזכית בצאחלה של המהופ", "ביום של המסיבה של מנו"],
+                correct: 0
+            },
+            {
+                question: "מה קרה בתאריך הזה 17/10?",
+                answers: ["לא קרה כלום", "הלכנו לשקיעה", "יצאנו לאכול יומנגס", "באתי לטפל בך במסיבה"],
+                correct: 3
+            },
+            {
+                question: "איך המתנה?",
+                answers: ["מטורפת", "המתנה הכי טובה שקיבלת בחיים מתנה של האחושרמוטה", "פסיכית", "סבירה"],
+                correct: 1
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+        const scoreElement = document.getElementById("score");
+        const correctAnswersElement = document.getElementById("correct-answers");
+        const totalQuestionsElement = document.getElementById("total-questions");
+        const startButton = document.getElementById("start-button");
+        const startScreen = document.getElementById("start-screen");
+
+        // פונקציה למיקס של התשובות
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // פונקציה להציג שאלה
+        function showQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                endQuiz();
+                return;
+            }
+
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+
+            // מיקס של התשובות
+            const shuffledAnswers = currentQuestion.answers.map((answer, index) => ({
+                text: answer,
+                isCorrect: index === currentQuestion.correct
+            }));
+            shuffle(shuffledAnswers);
+
+            optionsElement.innerHTML = ""; // ניקוי התשובות הקודמות
+            shuffledAnswers.forEach(answer => {
+                const button = document.createElement("button");
+                button.textContent = answer.text;
+                button.onclick = () => handleAnswer(answer.isCorrect, button);
+                optionsElement.appendChild(button);
+            });
+        }
+
+        // פונקציה לטפל בתשובה שנבחרה
+        function handleAnswer(isCorrect, button) {
+            if (isCorrect) {
+                button.classList.add('correct');
+                correctAnswers++;
+            } else {
+                button.classList.add('incorrect');
+            }
+
+            // לחכות שנייה לפני המעבר לשאלה הבאה
+            setTimeout(() => {
+                currentQuestionIndex++;
+                showQuestion();
+            }, 1000);
+        }
+
+        // פונקציה לסיום השאלון
+        function endQuiz() {
+            questionElement.textContent = "השאלון הסתיים!";
+            optionsElement.innerHTML = "";
+            scoreElement.classList.remove("hidden-q");
+            correctAnswersElement.textContent = correctAnswers;
+            totalQuestionsElement.textContent = questions.length;
+        }
+
+        // פונקציה להתחלת השאלון
+        startButton.addEventListener("click", () => {
+            startScreen.classList.add("hidden-q");
+            document.getElementById("quiz-container").classList.remove("hidden-q");
+            showQuestion();
+        });
+    </script>
+</body>
+</html>

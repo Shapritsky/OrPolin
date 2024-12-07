@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>אור בפולין❤️</title>
+    <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- מסך טעינה -->
+    <div id="loader" class="loader">
+        <div class="loader-icon">
+            <div class="white-line"></div>
+            <span class="loader-text">לאור בלבד</span>
+        </div>
+    </div>
+
+    <!-- התוכן של הדף -->
+    <div id="content" style="display: none;">
+        <header>
+            <div class="toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <div class="close">X</div>
+                <a href="Main.html">ראשי</a>
+                <a href="mirror.html">מצלמה שבטלפון</a>
+                <a href="Gallrey.html">תמונות</a>
+                <a href="פרופורציה.html">פרופורציה</a>
+            </nav>
+            <h1>אור בפולין</h1>
+        </header>
+
+        <section id="section1">
+            <h2>ליום 1</h2>
+            <a href="ברכה 1.html" class="btn">קישור לברכה</a>
+        </section>
+
+        <section id="section2">
+            <h2>ליום 2</h2>
+            <a href="ברכה 2.html" class="btn">קישור לברכה</a>
+        </section>
+
+        <section id="section3">
+            <h2>ליום 3</h2>
+            <a href="ברכה 3.html" class="btn">קישור לברכה</a>
+        </section>
+
+        <section id="section4">
+            <h2>ליום 4</h2>
+            <a href="ברכה 4.html" class="btn">קישור לברכה</a>
+        </section>
+
+        <section id="section5">
+            <h2>ליום 5</h2>
+            <a href="ברכה 5.html" class="btn">קישור לברכה</a>
+        </section>
+
+        <section id="section6">
+            <h2>ליום 6</h2>
+            <a href="ברכה 6.html" class="btn">קישור לברכה</a>
+        </section>
+
+        <section id="section7">
+            <h2>ליום 7</h2>
+            <a href="ברכה 7.html" class="btn">קישור לברכה</a>
+        </section>
+
+        <section id="section8">
+            <h2>ליום 8</h2>
+            <a href="ברכה 8.html" class="btn">קישור לברכה</a>
+        </section>
+
+    </div>
+
+    <script>
+        window.onload = function () {
+            // אחרי 2.5 שניות מתחילים את האנימציה של ההעלמה
+            setTimeout(function () {
+                // מוסיף את המחלקה hidden שמבצע את האנימציה של שקיפות
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1500); // 2.5 שניות המתנה לפני התחלת האנימציה
+        }
+
+        // מאזינים לאירוע של סיום האנימציה
+        document.querySelector('.loader').addEventListener('transitionend', function () {
+            // מסתיר את ה-loader אחרי סיום האנימציה
+            document.getElementById("content").style.display = "block";
+            document.getElementById("loader").style.display = "none";
+            // מייד מציג את התוכן
+            
+        });
+
+        let toggler = document.querySelector(".toggle");
+        let close = document.querySelector(".close");
+        let nav = document.querySelector("nav");
+
+        // כאשר לוחצים על אייקון התפריט
+        toggler.onclick = function () {
+            nav.classList.add("open");
+        }
+
+        // כאשר לוחצים על כפתור הסגירה
+        close.onclick = function () {
+            nav.classList.remove("open");
+        }
+
+        // כאשר לוחצים על מקש ה-Escape
+        document.onkeyup = function (e) {
+            if (e.key === "Escape") {
+                nav.classList.remove("open");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

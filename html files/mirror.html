@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header style=" overflow:hidden">
+        <div class="toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <div class="close">X</div>
+            <a href="Main.html">ראשי</a>
+            <a href="mirror.html">מצלמה שבטלפון</a>
+            <a href="Gallrey.html">תמונות</a>
+            <a href="פרופורציה.html">פרופורציה</a>
+        </nav>
+        <section id="camera-page">
+            <!-- כיתוב המצלמה -->
+            <div class="camera-caption">
+                <h2>מצלמה מצלמה שבטלפון, מי הכי יפה בפולין היום?</h2>
+            </div>
+            <!-- מצלמה -->
+            <video id="camera" autoplay playsinline></video>
+        </section>
+    </header>
+
+
+
+
+    <script>
+    // גישה למצלמה של הדפדפן
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                document.getElementById('camera').srcObject = stream;
+            })
+            .catch(function (error) {
+                console.error("שגיאה בגישה למצלמה: ", error);
+            });
+
+        let toggler = document.querySelector(".toggle");
+        let close = document.querySelector(".close");
+        let nav = document.querySelector("nav");
+
+        // כאשר לוחצים על אייקון התפריט
+        toggler.onclick = function () {
+            nav.classList.add("open");
+        }
+
+        // כאשר לוחצים על כפתור הסגירה
+        close.onclick = function () {
+            nav.classList.remove("open");
+        }
+
+        // כאשר לוחצים על מקש ה-Escape
+        document.onkeyup = function (e) {
+            if (e.key === "Escape") {
+                nav.classList.remove("open");
+            }
+        }
+    </script>
+
+
+</body>
+</html>

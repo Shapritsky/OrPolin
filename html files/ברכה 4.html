@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <div class="close">X</div>
+            <a href="Main.html">ראשי</a>
+            <a href="mirror.html">מצלמה שבטלפון</a>
+            <a href="Gallrey.html">תמונות</a>
+            <a href="פרופורציה.html">פרופורציה</a>
+        </nav>
+
+
+        <div class="continer">
+            <p>
+                אור אהובה שלי
+            </p>
+            <p>
+                הגעת ליום האמצעי של הטיול! זה הרגע שבו אפשר רגע לעצור, להסתכל אחורה על כל מה שעברת עד עכשיו ולנסות לעכל את הכל. אני בטוח שהיה לך טירוף של חוויות – גם כיפיות וגם כאלה שקצת שורטות את הלב. זה בדיוק הזמן לקחת אוויר, לחשוב על מה למדת, על מה שעבר עלייך ועל איך זה הולך להישאר איתך. .
+            </p>
+            <p>אני כזה גאה בך, באמת. הדרך שאת עוברת את זה גם אם קצת קשה. אז תני לעצמך רגע של שקט לעכל ותמשיכי לחוות, כי אני בטוח שיש לך עוד מלא חוויות שמחכות לך בימים שנשארו. תזכרי שאני כאן, חושב עלייך כל שנייה, מתגעגע ברמות קשות ומחכה כמו משוגע שתחזרי כבר. אוהב מלא! ❤️</p>
+        
+        </div>
+    </div>
+    <script>
+        let toggler = document.querySelector(".toggle");
+        let close = document.querySelector(".close");
+        let nav = document.querySelector("nav");
+
+        // כאשר לוחצים על אייקון התפריט
+        toggler.onclick = function () {
+            nav.classList.add("open");
+        }
+
+        // כאשר לוחצים על כפתור הסגירה
+        close.onclick = function () {
+            nav.classList.remove("open");
+        }
+
+        // כאשר לוחצים על מקש ה-Escape
+        document.onkeyup = function (e) {
+            if (e.key === "Escape") {
+                nav.classList.remove("open");
+            }
+        }</script>
+</body>
+</html>

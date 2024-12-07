@@ -1,0 +1,146 @@
+﻿
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link href="../css/StyleSheet1.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="background">
+            <div class="toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <div class="close">X</div>
+                <a href="Main.html">ראשי</a>
+                <a href="mirror.html">מצלמה שבטלפון</a>
+                <a href="Gallrey.html">תמונות</a>
+                <a href="פרופורציה.html">פרופורציה</a>
+            </nav>
+
+            <div class="continer-m">
+                <div class="song-lyrics">
+                    <p>
+                        עברתי לידך ברחוב ממש כמו הרוח,
+                        הכל זמני זו רק תקופה, בזה אני בטוח,
+                        היום חוץ מעלינו אין על מי לסמוך
+                        ואלוקים כבר לא בורא נשים יפות כמוך, כמוך
+                    </p>
+                    <p>
+                        מחפש עכשיו למצוא פינה של שקט,
+                        עוצר לנשום אויר בצידי הדרך, אין לי שום מחר
+                    </p>
+                    <p>
+                        באתי אלייך, לבוש כל יום באותה חליפה
+                        של הגבר המיוסר, את הולכת לישון
+                        ואני שוב ליפול על הבר
+                        במקום על שפתייך, יושב לי לבד על כוס יין
+                        האמת עוד בסוף תדבר
+                        והשקר יהיה לי חבר
+                    </p>
+                    <p>
+                        דופק ומחכה ליד הדלת, כמו אורח,
+                        מת שתפתחי למרות שיש עליי את המפתח
+                        עם הקניות נכנס משאיר בחוץ ת'היגיון
+                        ובחזה שוב הכאב מכה
+                        ולא נותן לישון, לישון
+                    </p>
+                    <p>
+                        מחפש עכשיו למצוא פינה של שקט,
+                        עוצר לנשום אויר בצידי הדרך, אין לי שום מחר
+                    </p>
+                    <p>
+                        באתי אלייך, לבוש כל יום באותה חליפה
+                        של הגבר המיוסר, את הולכת לישון
+                        ואני שוב ליפול על הבר
+                        במקום על שפתייך, יושב לי לבד על כוס יין
+                        האמת עוד בסוף תדבר
+                        והשקר יהיה לי חבר
+                    </p>
+                </div>
+
+                <div class="mp-wrapper">
+                    <div class="mp">
+                        <figure class="mp-artist"></figure>
+                        <div class="mp-metadata">
+                            <h3>באתי אלייך</h3>
+                            <h4>אייל גולן</h4>
+                            <div class="mp-lyrics">
+                                כמו בשיר "באתי אלייך", אני תמיד כאן<br />
+                                גם כשאת רחוקה
+                                אני מחכה לך<br />
+                                אוהב אותך תמיד
+                            </div>
+                        </div>
+
+
+                        <br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br />
+                                                <audio id="myAudio" autoplay preload="auto">
+                                                    <source src="../img/%d7%90%d7%99%d7%99%d7%9C%20%d7%92%d7%95%d7%9C%d7%9F%20-%20%d7%91%d7%90%d7%aa%d7%99%20%d7%90%d7%9c%d7%99%d7%99%d7%9a%20Eyal%20Golan.mp3" type="audio/mpeg" />
+                                                </audio>
+                        <button id="playPauseButton">הפסק שיר</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <script>
+            let toggler = document.querySelector(".toggle");
+            let close = document.querySelector(".close");
+            let nav = document.querySelector("nav");
+
+            // כאשר לוחצים על אייקון התפריט
+            toggler.onclick = function () {
+                nav.classList.add("open");
+            }
+
+            // כאשר לוחצים על כפתור הסגירה
+            close.onclick = function () {
+                nav.classList.remove("open");
+            }
+
+            // כאשר לוחצים על מקש ה-Escape
+            document.onkeyup = function (e) {
+                if (e.key === "Escape") {
+                    nav.classList.remove("open");
+                }
+            }
+
+            window.onload = function () {
+                var audio = document.getElementById("myAudio");
+                audio.volume = 0.2;  // הגדרת עוצמת השמע ל-20% (הערך יכול להיות בין 0 ל-1)
+                audio.play();  // ניגון אוטומטי ברגע שהדף נטען
+
+                // כפתור לניגון והפסקת השיר
+                var playPauseButton = document.getElementById("playPauseButton");
+
+                playPauseButton.onclick = function () {
+                    if (audio.paused) {
+                        audio.play();  // ניגון השיר
+                        playPauseButton.innerText = "הפסק שיר";  // שינוי הטקסט בכפתור
+                    } else {
+                        audio.pause();  // הפסקת השיר
+                        playPauseButton.innerText = "ניגון השיר";  // שינוי הטקסט בכפתור
+                    }
+                };
+            };
+
+
+        </script>
+    </body>
+</html>
