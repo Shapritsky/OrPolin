@@ -4,42 +4,52 @@
     <meta charset="utf-8" />
     <title></title>
     <link href="../css/StyleSheet1.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="timer">00:00:00:00</div> <!-- טיימר -->
-    <!-- הטמעת פלייליסט של ספוטיפיי -->
-    <iframe src="https://open.spotify.com/embed/playlist/7JORFK91LLN4jUwtCsawuI?utm_source=generator"
-            width="80%" height="352" frameBorder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-    </iframe>
+    <div class="background">
+        <div class="continer-timer">
+            <h1 class="timer-text">המסע לפולין</h1>
+            <h1 class="timer-text2">קחי פלייליסט לבנתיים</h1>
 
-    <script>// זמן השחרור של האתר (10 בדצמבר 2024, 20:00)
-        const releaseDate = new Date("2024-12-10T20:00:00");
+            <div id="timer">00:00:00:00</div> <!-- טיימר -->
+            <!-- הטמעת פלייליסט של ספוטיפיי -->
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7JORFK91LLN4jUwtCsawuI?utm_source=generator&theme=0" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <script>
+                function padZero(num) {
+                    return num.toString().padStart(2, '0');
+                }
 
-        function updateTimer() {
-            const now = new Date();
-            const timeLeft = releaseDate - now;
+                // זמן השחרור של האתר (10 בדצמבר 2024, 20:00)
+                const releaseDate = new Date("2024-12-10T20:00:00");
 
-            if (timeLeft <= 0) {
-                // ברגע שהזמן נגמר, אפשר להחליף דף
-                window.location.href = "index.html"; // תשנה לכתובת הדף שתרצה
-                return;
-            }
+                function updateTimer() {
+                    const now = new Date();
+                    const timeLeft = releaseDate - now;
 
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    if (timeLeft <= 0) {
+                        // ברגע שהזמן נגמר, אפשר להחליף דף
+                        window.location.href = "Main.html"; // תשנה לכתובת הדף שתרצה
+                        return;
+                    }
 
-            // הצגת הטיימר
-            document.getElementById("timer").textContent =
-                `${days}:${hours}:${minutes}:${seconds}`;
-        }
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-        // עדכון הטיימר כל שנייה
-        setInterval(updateTimer, 1000);
-        updateTimer(); // אתחול מיידי של הטיימר</script>
+                    // הצגת הטיימר עם זוגות של אפסים
+                    document.getElementById("timer").textContent =
+                        `${padZero(days)}:${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+                }
+
+                // עדכון הטיימר כל שנייה
+                setInterval(updateTimer, 1000);
+                updateTimer(); // אתחול מיידי של הטיימר
+            </script>
+        </div>
+        </div>
 </body>
 </html>
